@@ -1,0 +1,23 @@
+Trap Rain
+
+//1. basic and easy to understand
+//one stack
+
+class Solution{
+  public int trap(int[] height){
+    int res=0;
+    Stack<Integer> s=new Stack<>();
+    
+    for(int i=0;i<height.length;i++){
+      while(!s.isEmpty()&&height[i]>height[s.peek()]){
+        int bottom=s.pop();
+        if(s.isEmpty())
+          break;
+        int left=s.peek();
+        res+=(i-1-left)*(Math.min(height[left],height[i])-height[bottom]);
+      }
+      s.push(i);
+    }
+    return res;
+  }
+}
