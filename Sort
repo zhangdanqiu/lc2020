@@ -1,0 +1,85 @@
+>**1. Bubble Sort (Stable)**
+Avg time complex: O(n2)
+O(n)--O(n2)
+
+    public int[] sort(int[] array){
+      int arr=Arrays.copyOf(array,array.length);
+      for(int i=1;i<arr.length;i++){
+
+        boolean flag=true;
+        for(int j=0;j<arr.length-i;j++){
+          if(arr[j]>arr[j+1]){
+            int temp=int[j];
+            int[j]=int[j+1];
+            int[j+1]=temp;
+
+            flag=false;
+          }
+        }
+        if(flag)
+          break;
+      }
+      return arr;
+
+    }
+
+
+>**2. Selection Sort (Stable)**
+Avg time complexity: O(n2)
+
+    public int[] sort(int array[])throw Exception{
+        int[] arr=Arrays.copyOf(array,array.length){
+          for(int i=0;i<arr.length;i++){
+            int left=i;
+            for(int j=i+1;j<arr.length;j++){
+              if(arr[j]<arr[left]){
+                  left=j;
+              }
+            }
+            if(left!=i){
+                int temp=arr[left];
+                arr[left]=arr[i];
+                arr[i]=temp;
+            }
+          }
+
+          return arr;
+        }
+
+    }
+
+
+>**3. Quick Sort (Unstable)**
+Avg Time complexity O(nlogn)
+Bad O(n2) **rare**
+
+    public int[] sort(int[] array[])throw Exception{
+        int[] arr=Arrays.copyOf(array,array.length){
+            return quickSort(arr,0,arr.length-1);
+        }
+    }
+    private int partition(int[] arr,int left,int right){
+        int pivot=left;
+        int idx=left+1;
+        for(int i=idx;i<=right;i++){
+            if(arr[i]<arr[pivot]){
+                swap(i,pivot,arr);
+                idx++;
+            }
+        }
+        swap(pivot,idx-1,arr);
+        return idx-1;
+    }
+    private int[] quickSort(int[] arr,int left,int right){
+        if(left<right){
+            int pivotIdx=partition(arr,left,right);
+            quickSort(arr,left,pivotIdx-1);
+            quickSort(arr,pivotIdx+1,right);
+        }
+        return arr;
+    }
+    private void swap(int i,int j,int[] arr){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
